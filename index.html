@@ -12,8 +12,11 @@
     <title>Xerifes AM1</title>
 </head>
 <body>
-      <h1>Lista de Xerifes AM1</h1>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Pesquisar por Nomes">
+    <h1>Lista de Xerifes AM1</h1>
+    <label for="nomesAntigos">Pesquisar nomes antigos</label>
+    <input type="text" id="nomesAntigos" onkeyup="nomesAntigos()" placeholder="NomesAntigos">
+    <label for="nomesAntigos">Pesquisar nomes novos</label>
+    <input type="text" id="nomesNovos" onkeyup="nomesNovos()" placeholder="NomesNovos">
     <table id = 'table' class="table table-dark">
     
         
@@ -21,17 +24,17 @@
 
 
     <script>
-function myFunction() {
+function nomesAntigos() {
   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
+  input = document.getElementById("nomesAntigos");
+  filter = input.value.trim().toUpperCase();
   table = document.getElementById("table");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0] && tr[i].getElementsByTagName("td")[2];
+    td = tr[i].getElementsByTagName("td")[0] ;
     if (td) {
       txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      if (txtValue.trim().toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
@@ -40,8 +43,29 @@ function myFunction() {
         
   }
 }
-// Suponha que este seja o URL do seu endpoint
-let url = "https://apenas.pythonanywhere.com/";
+function nomesNovos() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("nomesNovos");
+  filter = input.value.trim().toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.trim().toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+        
+  }
+}
+
+
+
+let url = "http://127.0.0.1:5000";
 
 fetch(url)
     .then(response => response.json())
@@ -66,7 +90,14 @@ fetch(url)
             let row = tbody.insertRow();
             headers.forEach((header, i) => {
                 let cell = row.insertCell(i);
-                cell.innerHTML = item[header];
+                if (item[header] ){
+                    cell.innerHTML = item[header];
+                    console.log(item[header])
+
+                }
+               
+                
+
             });
         });
 
