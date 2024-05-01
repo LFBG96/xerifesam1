@@ -13,10 +13,7 @@
 </head>
 <body>
     <h1>Lista de Xerifes AM1</h1>
-    <label for="nomesAntigos">Pesquisar nomes antigos</label>
-    <input type="text" id="nomesAntigos" onkeyup="nomesAntigos()" placeholder="NomesAntigos">
-    <label for="nomesAntigos">Pesquisar nomes novos</label>
-    <input type="text" id="nomesNovos" onkeyup="nomesNovos()" placeholder="NomesNovos">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Pesquisar por nomes">
     <table id = 'table' class="table table-dark">
     
         
@@ -24,44 +21,27 @@
 
 
     <script>
-function nomesAntigos() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("nomesAntigos");
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
   filter = input.value.trim().toUpperCase();
   table = document.getElementById("table");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0] ;
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.trim().toUpperCase().indexOf(filter) > -1) {
+    td0 = tr[i].getElementsByTagName("td")[0];
+    td1 = tr[i].getElementsByTagName("td")[2];
+    if (td0 || td1) {
+      txtValue0 = td0.textContent || td0.innerText;
+      txtValue1 = td1.textContent || td1.innerText;
+      if (txtValue0.trim().toUpperCase().indexOf(filter) > -1 || txtValue1.trim().toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
       }
-    }
-        
+    }       
   }
 }
-function nomesNovos() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("nomesNovos");
-  filter = input.value.trim().toUpperCase();
-  table = document.getElementById("table");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.trim().toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-        
-  }
-}
+
 
 
 
