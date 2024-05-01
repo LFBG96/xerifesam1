@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <style>
+    h1{
+        text-align: center;
+    }
+   </style>
+    <title>Xerifes AM1</title>
+</head>
+<body>
+    <h1>Lista de Xerifes AM1</h1>
+    <table id = 'table' class="table table-striped">
+        
+    </table>
+
+
+    <script>
+// Suponha que este seja o URL do seu endpoint
+let url = "https://apenas.pythonanywhere.com/";
+
+fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        // Criação da tabela
+        let table = document.getElementById('table');
+
+        // Criação do cabeçalho da tabela
+        let header = table.createTHead();
+        
+        let row = header.insertRow(0);
+        let headers = ['NomeAntigo', 'Data', 'NomeNovo', 'Cla'];
+        headers.forEach((header, i) => {
+            let cell = row.insertCell(i);
+            cell.innerHTML = header;
+        });
+
+        // Preenchimento da tabela com dados
+        let tbody = table.createTBody();
+        
+        data.forEach(item => {
+            let row = tbody.insertRow();
+            headers.forEach((header, i) => {
+                let cell = row.insertCell(i);
+                cell.innerHTML = item[header];
+            });
+        });
+
+        // Adicionando a tabela ao corpo do documento
+        document.body.appendChild(table);
+    })
+    .catch(error => console.error('Erro:', error));
+    
+
+    </script>
+ 
+    
+</body>
+
+</html>
