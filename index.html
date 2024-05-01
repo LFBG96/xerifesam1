@@ -12,13 +12,34 @@
     <title>Xerifes AM1</title>
 </head>
 <body>
-    <h1>Lista de Xerifes AM1</h1>
+      <h1>Lista de Xerifes AM1</h1>
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Pesquisar por NomesAntigos">
     <table id = 'table' class="table table-dark">
+    
         
     </table>
 
 
     <script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0] && tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+        
+  }
+}
 // Suponha que este seja o URL do seu endpoint
 let url = "https://apenas.pythonanywhere.com/";
 
