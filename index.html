@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Lista de Xerifes AM1</h1>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Pesquisar por nomes">
+    <input type="text" id="pesquisa" onkeyup="pesquisar()" placeholder="Pesquisar por nomes">
     <table id = 'table' class="table table-dark">
     
         
@@ -21,19 +21,21 @@
 
 
     <script>
-function myFunction() {
+function pesquisar() {
   var input, filter, table, tr, td, i;
-  input = document.getElementById("myInput");
+  input = document.getElementById("pesquisa");
   filter = input.value.trim().toUpperCase();
   table = document.getElementById("table");
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length; i++) {
     td0 = tr[i].getElementsByTagName("td")[1];
-    td1 = tr[i].getElementsByTagName("td")[3];
-    if (td0 || td1) {
+    td1 = tr[i].getElementsByTagName("td")[2];
+    td2 = tr[i].getElementsByTagName("td")[3];
+    if (td0 || td1 ||td2) {
       txtValue0 = td0.textContent || td0.innerText;
       txtValue1 = td1.textContent || td1.innerText;
-      if (txtValue0.trim().toUpperCase().indexOf(filter) > -1 || txtValue1.trim().toUpperCase().indexOf(filter) > -1) {
+      txtValue2 = td2.textContent || td2.innerText;
+      if (txtValue0.trim().toUpperCase().indexOf(filter) > -1 || txtValue1.trim().toUpperCase().indexOf(filter) > -1 || txtValue2.trim().toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
@@ -45,7 +47,7 @@ function myFunction() {
 
 
 
-let url = "https://apenas.pythonanywhere.com/";
+let url = "http://127.0.0.1:5000";
 
 fetch(url)
     .then(response => response.json())
