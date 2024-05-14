@@ -1,0 +1,6 @@
+<p>Caso deseje conhecer o site, acesse o link abaixo</p>
+<a href="https://lfbg96.github.io/xerifesam1">XerifesAm1</a>
+
+<h3>O jogo em questão é o Dino Storm</h3>
+
+<a href="https://dinostorm.com/pt-br/">Dino Storm</a>
