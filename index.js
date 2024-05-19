@@ -2,6 +2,11 @@
 let loadingScreen = document.createElement('div');
 loadingScreen.id = "loadingScreen";
 
+// Cria uma mensagem na tela de carregamento
+let loadingMsg = document.createElement('h3')
+loadingMsg.innerText = "A tabela está carregando, aguarde."
+loadingScreen.appendChild(loadingMsg)
+
 // Cria um elemento de imagem para o GIF
 let loadingGif = document.createElement('img');
 loadingGif.src = "https://media.tenor.com/fqDzKdvLIhYAAAAi/dinosaur-dancing-dino.gif"; // Substitua pelo URL do seu GIF
