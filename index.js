@@ -1,5 +1,9 @@
 // Cria um elemento de carregamento
 let loadingScreen = document.createElement('div');
+loadingScreen.style.position = 'absolute';
+loadingScreen.style.top = '50%';
+loadingScreen.style.left = '50%';
+loadingScreen.style.transform = 'translate(-50%, -50%)';
 loadingScreen.id = "loadingScreen";
 
 // Cria uma mensagem na tela de carregamento
